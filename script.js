@@ -56,27 +56,20 @@ function createPlayer(hostId, work, controls = false, onError = null, onSuccess 
       if (onSuccess) onSuccess(player);
     },
     update: player => {
-      if (work.keepHandSword) keepHandSwordVisible(player.skeleton);
+      if (work.keepHandSword) keepHandSwordAttached(player.skeleton);
     },
     error: (_player, reason) => onError && onError(String(reason || 'Spine 데이터를 불러오지 못했습니다.'))
   };
   return new spine.SpinePlayer(hostId, config);
 }
 
-function keepHandSwordVisible(skeleton) {
+function keepHandSwordAttached(skeleton) {
   const slot = skeleton.findSlot('blade');
   if (!slot) return;
 
   const sword = skeleton.getAttachment(slot.data.index, 'blade');
   if (sword && slot.getAttachment() !== sword) slot.setAttachment(sword);
   slot.color.a = 1;
-
-  const order = skeleton.drawOrder;
-  const currentIndex = order.indexOf(slot);
-  if (currentIndex >= 0 && currentIndex !== order.length - 1) {
-    order.splice(currentIndex, 1);
-    order.push(slot);
-  }
 }
 
 function showPlayerError(element, message) {
