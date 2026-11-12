@@ -1,6 +1,6 @@
 const WORKS = [
   { title: 'Lazuel — Character Study', type: 'SPINE 2D · ILLUSTRATION', description: '애니메이션을 선택해 재생해보세요.', data: { jsonUrl: 'assets/spine/Illust_Lazuel_PS/Illust_Lazuel_PS.json', atlasUrl: 'assets/spine/Illust_Lazuel_PS/Illust_Lazuel_PS.atlas' }, preview: 'preview-illust', initialAnimation: 'idle', viewportPadding: { horizontal: '8%', top: '8%' } },
-  { title: 'Bell', type: 'SPINE 2D · SD CHARACTER', description: 'SD 캐릭터 Bell의 Spine 애니메이션입니다.', data: { binaryUrl: 'assets/spine/SD_Bell/SD_Bell.skel', atlasUrl: 'assets/spine/SD_Bell/SD_Bell.atlas' }, preview: 'preview-sd', viewportPadding: { horizontal: '18%', top: '20%' } },
+  { title: 'Bell', type: 'SPINE 2D · SD CHARACTER', description: 'SD 캐릭터 Bell의 Spine 애니메이션입니다.', data: { binaryUrl: 'assets/spine/SD_Bell/SD_Bell.skel', atlasUrl: 'assets/spine/SD_Bell/SD_Bell.atlas' }, preview: 'preview-sd', viewportPadding: { horizontal: '18%', top: '20%' }, keepHandSword: true },
   { title: 'Hellhedgehog', type: 'SPINE 2D · MONSTER', description: 'Hellhedgehog 몬스터의 Spine 애니메이션입니다.', data: { binaryUrl: 'assets/spine/Monster_Hellhedgehog/2D_Hellhedgehog.skel', atlasUrl: 'assets/spine/Monster_Hellhedgehog/2D_Hellhedgehog.atlas' }, preview: 'preview-monster', viewportPadding: { horizontal: '18%', top: '18%' } }
 ];
 
@@ -55,9 +55,28 @@ function createPlayer(hostId, work, controls = false, onError = null, onSuccess 
       if (hostId === 'spinePlayer') placeholder.hidden = true;
       if (onSuccess) onSuccess(player);
     },
+    update: player => {
+      if (work.keepHandSword) keepHandSwordVisible(player.skeleton);
+    },
     error: (_player, reason) => onError && onError(String(reason || 'Spine 데이터를 불러오지 못했습니다.'))
   };
   return new spine.SpinePlayer(hostId, config);
+}
+
+function keepHandSwordVisible(skeleton) {
+  const slot = skeleton.findSlot('blade');
+  if (!slot) return;
+
+  const sword = skeleton.getAttachment(slot.data.index, 'blade');
+  if (sword && slot.getAttachment() !== sword) slot.setAttachment(sword);
+  slot.color.a = 1;
+
+  const order = skeleton.drawOrder;
+  const currentIndex = order.indexOf(slot);
+  if (currentIndex >= 0 && currentIndex !== order.length - 1) {
+    order.splice(currentIndex, 1);
+    order.push(slot);
+  }
 }
 
 function showPlayerError(element, message) {
