@@ -27,6 +27,7 @@ function createPlayer(hostId, animation, controls = false, onError = null) {
     backgroundColor: '#e7eae200',
     success: player => {
       player.setAnimation(animation, true);
+      player.play();
       if (hostId === 'spinePlayer') placeholder.hidden = true;
     },
     error: (_player, reason) => onError && onError(String(reason || 'Spine 데이터를 불러오지 못했습니다.'))
