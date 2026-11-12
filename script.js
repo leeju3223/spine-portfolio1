@@ -22,17 +22,18 @@ function createPlayer(hostId, animation, controls = false, onError = null) {
     ...SPINE_DATA,
     animation,
     showControls: controls,
+    interactive: controls,
     premultipliedAlpha: true,
     alpha: true,
     backgroundColor: '#e7eae200',
     ...(hostId !== 'spinePlayer' ? {
-  viewport: {
-    padLeft: '-5%',
-    padRight: '-5%',
-    padTop: '-5%',
-    padBottom: '-5%'
-  }
-} : {}),
+      viewport: {
+        padLeft: '-5%',
+        padRight: '-5%',
+        padTop: '-5%',
+        padBottom: '-5%'
+      }
+    } : {}),
     success: player => {
       player.setAnimation(animation, true);
       player.play();
@@ -49,8 +50,6 @@ function showPlayerError(element, message) {
 }
 
 function initPreviews() {
-  const heroError = document.getElementById('heroError');
-  createPlayer('heroPlayer', 'idle', false, message => showPlayerError(heroError, message));
   createPlayer('idlePreview', 'idle', false, message => showPlayerError(document.getElementById('idlePreview'), message));
   createPlayer('pointPreview', 'point', false, message => showPlayerError(document.getElementById('pointPreview'), message));
 }
@@ -112,17 +111,5 @@ document.querySelectorAll('[data-close]').forEach(element => element.addEventLis
 document.addEventListener('keydown', event => {
   if (event.key === 'Escape' && modal.classList.contains('open')) closeModal();
 });
-
-const menuToggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.main-nav');
-menuToggle.addEventListener('click', () => {
-  const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
-  menuToggle.setAttribute('aria-expanded', String(!expanded));
-  nav.classList.toggle('open', !expanded);
-});
-nav.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
-  nav.classList.remove('open');
-  menuToggle.setAttribute('aria-expanded', 'false');
-}));
 
 window.addEventListener('load', initPreviews);
