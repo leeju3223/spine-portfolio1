@@ -1,7 +1,7 @@
 const WORKS = [
-  { title: 'Lazuel — Character Study', type: 'SPINE 2D · ILLUSTRATION', description: '애니메이션을 선택해 재생해보세요.', data: { jsonUrl: 'assets/spine/Illust_Lazuel_PS/Illust_Lazuel_PS.json', atlasUrl: 'assets/spine/Illust_Lazuel_PS/Illust_Lazuel_PS.atlas' }, preview: 'preview-illust', initialAnimation: 'idle' },
-  { title: 'Bell', type: 'SPINE 2D · SD CHARACTER', description: 'SD 캐릭터 Bell의 Spine 애니메이션입니다.', data: { binaryUrl: 'assets/spine/SD_Bell/SD_Bell.skel', atlasUrl: 'assets/spine/SD_Bell/SD_Bell.atlas' }, preview: 'preview-sd' },
-  { title: 'Hellhedgehog', type: 'SPINE 2D · MONSTER', description: 'Hellhedgehog 몬스터의 Spine 애니메이션입니다.', data: { binaryUrl: 'assets/spine/Monster_Hellhedgehog/2D_Hellhedgehog.skel', atlasUrl: 'assets/spine/Monster_Hellhedgehog/2D_Hellhedgehog.atlas' }, preview: 'preview-monster' }
+  { title: 'Lazuel — Character Study', type: 'SPINE 2D · ILLUSTRATION', description: '애니메이션을 선택해 재생해보세요.', data: { jsonUrl: 'assets/spine/Illust_Lazuel_PS/Illust_Lazuel_PS.json', atlasUrl: 'assets/spine/Illust_Lazuel_PS/Illust_Lazuel_PS.atlas' }, preview: 'preview-illust', initialAnimation: 'idle', viewportPadding: { horizontal: '8%', top: '8%' } },
+  { title: 'Bell', type: 'SPINE 2D · SD CHARACTER', description: 'SD 캐릭터 Bell의 Spine 애니메이션입니다.', data: { binaryUrl: 'assets/spine/SD_Bell/SD_Bell.skel', atlasUrl: 'assets/spine/SD_Bell/SD_Bell.atlas' }, preview: 'preview-sd', viewportPadding: { horizontal: '18%', top: '20%' } },
+  { title: 'Hellhedgehog', type: 'SPINE 2D · MONSTER', description: 'Hellhedgehog 몬스터의 Spine 애니메이션입니다.', data: { binaryUrl: 'assets/spine/Monster_Hellhedgehog/2D_Hellhedgehog.skel', atlasUrl: 'assets/spine/Monster_Hellhedgehog/2D_Hellhedgehog.atlas' }, preview: 'preview-monster', viewportPadding: { horizontal: '18%', top: '18%' } }
 ];
 
 let activePlayer = null;
@@ -14,7 +14,8 @@ function createPlayer(hostId, work, controls = false, onError = null, onSuccess 
     if (onError) onError('Spine Player 라이브러리를 불러오지 못했습니다. 인터넷 연결을 확인해 주세요.');
     return null;
   }
-  return new spine.SpinePlayer(hostId, {
+  const padding = work.viewportPadding || { horizontal: '8%', top: '8%' };
+  const config = {
     ...work.data,
     ...(work.initialAnimation ? { animation: work.initialAnimation } : {}),
     showControls: controls,
@@ -22,22 +23,36 @@ function createPlayer(hostId, work, controls = false, onError = null, onSuccess 
     premultipliedAlpha: true,
     alpha: true,
     backgroundColor: '#e7eae200',
-    ...(hostId !== 'spinePlayer' ? {
-      viewport: {
-        padLeft: '-5%',
-        padRight: '-5%',
-        padTop: '-5%',
-        padBottom: '-5%'
-      }
-    } : {}),
+    viewport: {
+      padLeft: padding.horizontal,
+      padRight: padding.horizontal,
+      padTop: padding.top,
+      padBottom: 0,
+      transitionTime: 0.18
+    },
     success: player => {
-      if (work.initialAnimation) player.setAnimation(work.initialAnimation, true);
+      const animations = player.skeleton.data.animations;
+      let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+      animations.forEach(animation => {
+        player.setViewport(animation);
+        const bounds = player.currentViewport;
+        minX = Math.min(minX, bounds.x);
+        minY = Math.min(minY, bounds.y);
+        maxX = Math.max(maxX, bounds.x + bounds.width);
+        maxY = Math.max(maxY, bounds.y + bounds.height);
+      });
+      if (Number.isFinite(minX) && maxX > minX && maxY > minY) {
+        Object.assign(config.viewport, { x: minX, y: minY, width: maxX - minX, height: maxY - minY });
+      }
+      const firstAnimation = work.initialAnimation || animations[0]?.name;
+      if (firstAnimation) player.setAnimation(firstAnimation, true);
       player.play();
       if (hostId === 'spinePlayer') placeholder.hidden = true;
       if (onSuccess) onSuccess(player);
     },
     error: (_player, reason) => onError && onError(String(reason || 'Spine 데이터를 불러오지 못했습니다.'))
-  });
+  };
+  return new spine.SpinePlayer(hostId, config);
 }
 
 function showPlayerError(element, message) {
@@ -86,7 +101,7 @@ function openWork(index) {
         button.setAttribute('aria-pressed', String(animation.name === (work.initialAnimation || animations[0].name)));
         button.addEventListener('click', () => {
           if (!activePlayer) return;
-          activePlayer.setAnimation(animation.name, true);
+          activePlayer.animationState.setAnimation(0, animation.name, true);
           activePlayer.play();
           list.querySelectorAll('.animation-option').forEach(option => option.setAttribute('aria-pressed', String(option === button)));
         });
