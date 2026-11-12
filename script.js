@@ -45,7 +45,12 @@ function createPlayer(hostId, work, controls = false, onError = null, onSuccess 
         Object.assign(config.viewport, { x: minX, y: minY, width: maxX - minX, height: maxY - minY });
       }
       const firstAnimation = work.initialAnimation || animations[0]?.name;
-      if (firstAnimation) player.setAnimation(firstAnimation, true);
+      player.skeleton.setToSetupPose();
+      if (firstAnimation) {
+        player.setAnimation(firstAnimation, true);
+        player.animationState.apply(player.skeleton);
+        player.skeleton.updateWorldTransform();
+      }
       player.play();
       if (hostId === 'spinePlayer') placeholder.hidden = true;
       if (onSuccess) onSuccess(player);
