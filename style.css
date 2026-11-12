@@ -4,11 +4,17 @@ html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans","Noto Sans KR",sans-serif;-webkit-font-smoothing:antialiased}
 .site-header{height:82px;padding:0 7%;display:flex;align-items:center;border-bottom:1px solid var(--line)}
 .brand{color:var(--ink);font-size:13px;font-weight:700;letter-spacing:.16em;text-decoration:none}
-.works{max-width:1440px;margin:0 auto;padding:58px 7% 100px}
+.works{max-width:1440px;margin:0 auto;padding:30px 7% 100px}
+.category{padding:30px 0 38px;border-bottom:1px solid var(--line)}
+.category-heading{display:flex;align-items:center;gap:12px;margin-bottom:20px}
+.category-heading h2{font-size:14px;font-weight:600;letter-spacing:.12em;margin:0;text-transform:uppercase}
+.category-heading span{font-size:9px;color:var(--muted);letter-spacing:.1em}
+.category .work-grid{grid-template-columns:minmax(0,660px)}
 .work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
 .work-card{min-width:0;cursor:pointer;outline:none}
 .work-visual{height:clamp(300px,42vw,560px);position:relative;overflow:hidden;background:#e6e9df}
 .visual-point{background:#e9e5df}
+.visual-sd{background:#e4e8e7}.visual-monster{background:#e4e2dc}
 .visual-label,.clip-name{position:absolute;z-index:2;font-size:9px;letter-spacing:.14em;color:#697064}
 .visual-label{top:17px;left:18px}.clip-name{bottom:17px;left:18px}
 .work-art{position:absolute;inset:0;display:grid;place-items:center;overflow:hidden}
@@ -29,6 +35,11 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans","No
 #spinePlayer.ready{opacity:1}
 .player-placeholder{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#3c5d39;text-align:center;padding:24px}
 .player-placeholder[hidden]{display:none}.placeholder-mark{font-size:52px;color:var(--lime);line-height:1}.player-placeholder b{font-size:10px;letter-spacing:.17em}.player-placeholder small{font-size:11px;color:#7a8374}
-.modal-info{padding:70px 36px 35px;align-self:center}.modal-info h2{font-size:32px;line-height:1.05;letter-spacing:-.06em;font-weight:500;margin:16px 0}.modal-info>p{font-size:12px;line-height:1.8;color:#7b7d75;margin:20px 0 28px}
-.modal-spec{display:flex;justify-content:space-between;gap:14px;border-top:1px solid var(--line);padding:14px 0;font-size:10px}.modal-spec span{color:#999b93;letter-spacing:.1em}.modal-spec b{font-weight:500;text-align:right}
-@media(max-width:760px){.site-header{height:68px;padding:0 6%}.works{padding:32px 6% 70px}.work-grid{grid-template-columns:1fr;gap:35px}.work-visual{height:min(112vw,470px)}.modal{padding:10px}.modal-panel{grid-template-columns:1fr;max-height:94vh}.modal-viewer{min-height:50vh;max-height:62vh}.modal-info{padding:28px 24px}.modal-info h2{font-size:27px}}
+.modal-info{padding:70px 36px 35px;align-self:center;max-height:90vh;overflow:auto}.modal-info h2{font-size:32px;line-height:1.05;letter-spacing:-.06em;font-weight:500;margin:16px 0}.modal-info>p{font-size:12px;line-height:1.8;color:#7b7d75;margin:20px 0 28px}
+.animation-picker{border-top:1px solid var(--line);padding-top:18px}.animation-picker>span{font-size:9px;letter-spacing:.14em;color:var(--muted)}
+.animation-list{display:grid;gap:7px;max-height:250px;overflow:auto;margin-top:12px;padding-right:5px}
+.animation-option{display:flex;align-items:center;gap:10px;text-align:left;width:100%;border:1px solid var(--line);background:transparent;padding:11px 12px;color:var(--ink);font:inherit;font-size:11px;cursor:pointer;transition:background .15s,border-color .15s}
+.animation-option::before{content:"";width:6px;height:6px;border:1px solid #aeb2a5;border-radius:50%;flex:none}
+.animation-option[aria-pressed="true"]{background:#e5eadb;border-color:#d5ddc7}.animation-option[aria-pressed="true"]::before{background:var(--lime);border-color:var(--lime)}
+.animation-list>small{font-size:11px;color:var(--muted);padding:8px 0}
+@media(max-width:760px){.site-header{height:68px;padding:0 6%}.works{padding:12px 6% 70px}.category{padding:26px 0 30px}.category .work-grid,.work-grid{grid-template-columns:1fr;gap:35px}.work-visual{height:min(112vw,470px)}.modal{padding:10px}.modal-panel{grid-template-columns:1fr;max-height:94vh}.modal-viewer{min-height:50vh;max-height:62vh}.modal-info{padding:28px 24px;max-height:42vh}.modal-info h2{font-size:27px}}

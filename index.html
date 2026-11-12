@@ -16,20 +16,37 @@
   <header class="site-header"><a class="brand" href="#top">PORTFOLIO</a></header>
   <main id="top">
     <section class="works" id="works" aria-label="Portfolio works">
-      <div class="work-grid" id="workGrid">
-        <article class="work-card" data-work="0" tabindex="0" role="button" aria-label="Lazuel idle 애니메이션 자세히 보기">
-          <div class="work-visual visual-idle"><span class="visual-label">LAZUEL / 001</span><div class="work-art"><div id="idlePreview" class="work-player"></div></div><span class="visual-play">↗</span><span class="clip-name">IDLE LOOP</span></div>
-          <div class="work-meta"><div><span class="work-type">SPINE 2D · LOOP</span><h2>Idle — Character Study</h2></div><span class="work-year">2026</span></div>
-        </article>
-        <article class="work-card" data-work="1" tabindex="0" role="button" aria-label="Lazuel point 애니메이션 자세히 보기">
-          <div class="work-visual visual-point"><span class="visual-label">LAZUEL / 002</span><div class="work-art"><div id="pointPreview" class="work-player"></div></div><span class="visual-play">↗</span><span class="clip-name">POINT MOTION</span></div>
-          <div class="work-meta"><div><span class="work-type">SPINE 2D · CHARACTER</span><h2>Point — Expressive Motion</h2></div><span class="work-year">2026</span></div>
-        </article>
-      </div>
+      <section class="category" aria-labelledby="illustTitle">
+        <div class="category-heading"><h2 id="illustTitle">Illust</h2><span>01</span></div>
+        <div class="work-grid">
+          <article class="work-card" data-work="0" tabindex="0" role="button" aria-label="Lazuel 작품과 애니메이션 보기">
+            <div class="work-visual visual-idle"><span class="visual-label">LAZUEL / 001</span><div class="work-art"><div id="preview-illust" class="work-player"></div></div><span class="visual-play">↗</span><span class="clip-name">ANIMATION PREVIEW</span></div>
+            <div class="work-meta"><div><span class="work-type">SPINE 2D · ILLUSTRATION</span><h3>Lazuel — Character Study</h3></div><span class="work-year">2026</span></div>
+          </article>
+        </div>
+      </section>
+      <section class="category" aria-labelledby="sdTitle">
+        <div class="category-heading"><h2 id="sdTitle">SD</h2><span>02</span></div>
+        <div class="work-grid">
+          <article class="work-card" data-work="1" tabindex="0" role="button" aria-label="SD Bell 작품과 애니메이션 보기">
+            <div class="work-visual visual-sd"><span class="visual-label">SD / 001</span><div class="work-art"><div id="preview-sd" class="work-player"></div></div><span class="visual-play">↗</span><span class="clip-name">ANIMATION PREVIEW</span></div>
+            <div class="work-meta"><div><span class="work-type">SPINE 2D · SD CHARACTER</span><h3>Bell</h3></div><span class="work-year">2026</span></div>
+          </article>
+        </div>
+      </section>
+      <section class="category" aria-labelledby="monsterTitle">
+        <div class="category-heading"><h2 id="monsterTitle">Monster</h2><span>03</span></div>
+        <div class="work-grid">
+          <article class="work-card" data-work="2" tabindex="0" role="button" aria-label="Hellhedgehog 작품과 애니메이션 보기">
+            <div class="work-visual visual-monster"><span class="visual-label">MONSTER / 001</span><div class="work-art"><div id="preview-monster" class="work-player"></div></div><span class="visual-play">↗</span><span class="clip-name">ANIMATION PREVIEW</span></div>
+            <div class="work-meta"><div><span class="work-type">SPINE 2D · MONSTER</span><h3>Hellhedgehog</h3></div><span class="work-year">2026</span></div>
+          </article>
+        </div>
+      </section>
     </section>
   </main>
   <div class="modal" id="workModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <div class="modal-backdrop" data-close></div><div class="modal-panel"><button class="modal-close" aria-label="닫기" data-close>×</button><div class="modal-viewer"><div id="spinePlayer" class="spine-player"></div><div id="playerPlaceholder" class="player-placeholder"><span class="placeholder-mark">✳</span><b>SPINE PLAYER</b><small>애니메이션을 불러오는 중입니다.</small></div></div><div class="modal-info"><span class="work-type" id="modalType">SPINE 2D ANIMATION</span><h2 id="modalTitle">Lazuel</h2><p id="modalDescription">캐릭터 애니메이션</p><div class="modal-spec"><span>ANIMATION</span><b id="modalAnimation">idle</b></div><div class="modal-spec"><span>SOFTWARE</span><b>Spine 4.1.08</b></div><div class="modal-spec"><span>PROJECT</span><b>Lazuel character study</b></div></div></div>
+    <div class="modal-backdrop" data-close></div><div class="modal-panel"><button class="modal-close" aria-label="닫기" data-close>×</button><div class="modal-viewer"><div id="spinePlayer" class="spine-player"></div><div id="playerPlaceholder" class="player-placeholder"><span class="placeholder-mark">✳</span><b>SPINE PLAYER</b><small>애니메이션을 불러오는 중입니다.</small></div></div><div class="modal-info"><span class="work-type" id="modalType">SPINE 2D ANIMATION</span><h2 id="modalTitle">Lazuel</h2><p id="modalDescription">애니메이션을 선택해 재생해보세요.</p><div class="animation-picker"><span>ANIMATIONS</span><div id="animationList" class="animation-list" aria-live="polite"><small>애니메이션 목록을 불러오는 중입니다.</small></div></div></div></div>
   </div>
   <script src="https://unpkg.com/@esotericsoftware/spine-player@4.1.*/dist/iife/spine-player.js"></script>
   <script src="script.js"></script>
