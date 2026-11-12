@@ -1,6 +1,6 @@
 const SPINE_DATA = {
-  jsonUrl: 'assets/spine/Illust_Lazuel_PS/Illust_Lazuel_PS.json',
-  atlasUrl: 'assets/spine/Illust_Lazuel_PS/Illust_Lazuel_PS.atlas'
+skeleton: 'assets/spine/Illust_Lazuel_PS/Illust_Lazuel_PS.json',
+atlas: 'assets/spine/Illust_Lazuel_PS/Illust_Lazuel_PS.atlas'
 };
 
 const WORKS = [
