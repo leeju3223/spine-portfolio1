@@ -25,6 +25,14 @@ function createPlayer(hostId, animation, controls = false, onError = null) {
     premultipliedAlpha: true,
     alpha: true,
     backgroundColor: '#e7eae200',
+    ...(hostId !== 'spinePlayer' ? {
+  viewport: {
+    padLeft: '-5%',
+    padRight: '-5%',
+    padTop: '-5%',
+    padBottom: '-5%'
+  }
+} : {}),
     success: player => {
       player.setAnimation(animation, true);
       player.play();
