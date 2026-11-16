@@ -12,8 +12,8 @@ const WORKS = [
     preview: 'preview-illust',
     initialAnimation: 'idle',
     viewportPadding: { horizontal: '8%', top: '8%' },
-    positionOffset: { x: 0, y: 0.1 },
-    characterZoom: 1.2
+    positionOffset: { x: 0, y: 0 },
+    characterZoom: 1
   },
   {
     title: 'Kasira',
@@ -25,8 +25,21 @@ const WORKS = [
     },
     preview: 'preview-illust-kasira',
     viewportPadding: { horizontal: '8%', top: '8%' },
-    positionOffset: { x: 0, y: 0.1 },
-    characterZoom: 1.2
+    positionOffset: { x: 0, y: 0 },
+    characterZoom: 1
+  },
+  {
+    title: 'Keneth New Year 2026',
+    type: 'SPINE 2D · ILLUSTRATION',
+    description: 'Keneth New Year 2026 Spine 일러스트입니다.',
+    data: {
+      jsonUrl: 'assets/spine/Illust_KenethNewYear2026_PS/Illust_KenethNewYear2026_PS.json',
+      atlasUrl: 'assets/spine/Illust_KenethNewYear2026_PS/Illust_KenethNewYear2026_PS.atlas'
+    },
+    preview: 'preview-illust-keneth',
+    viewportPadding: { horizontal: '8%', top: '8%' },
+    positionOffset: { x: 0, y: 0 },
+    characterZoom: 1
   },
   {
     title: 'Bell',
