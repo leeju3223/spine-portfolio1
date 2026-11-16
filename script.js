@@ -1,8 +1,8 @@
 const WORKS = [
   { title: 'Lazuel — Character Study', type: 'SPINE 2D · ILLUSTRATION', description: '애니메이션을 선택해 재생해보세요.', data: { jsonUrl: 'assets/spine/Illust_Lazuel_PS/Illust_Lazuel_PS.json', atlasUrl: 'assets/spine/Illust_Lazuel_PS/Illust_Lazuel_PS.atlas' }, preview: 'preview-illust', initialAnimation: 'idle', viewportPadding: { horizontal: '8%', top: '8%' } },
-  { title: 'Bell', type: 'SPINE 2D · SD CHARACTER', description: 'SD 캐릭터 Bell의 Spine 애니메이션입니다.', data: { binaryUrl: 'SD_Bell/SD_Bell.skel.bytes', atlasUrl: 'assets/spine/SD_Bell/SD_Bell.atlas' }, preview: 'preview-sd', viewportPadding: { horizontal: '18%', top: '20%' } },
-  { title: 'PopoMayor', type: 'SPINE 2D · SD CHARACTER', description: 'SD 캐릭터 PopoMayor의 Spine 애니메이션입니다.', data: { binaryUrl: 'SD_PopoMayor/SD_PopoMayor.skel.bytes', atlasUrl: 'SD_PopoMayor/SD_PopoMayor.atlas.txt' }, preview: 'preview-popo-mayor', viewportPadding: { horizontal: '18%', top: '20%' } },
-  { title: 'Hellhedgehog', type: 'SPINE 2D · MONSTER', description: 'Hellhedgehog 몬스터의 Spine 애니메이션입니다.', data: { binaryUrl: 'assets/spine/Monster_Hellhedgehog/2D_Hellhedgehog.skel', atlasUrl: 'assets/spine/Monster_Hellhedgehog/2D_Hellhedgehog.atlas' }, preview: 'preview-monster', viewportPadding: { horizontal: '18%', top: '18%' } }
+  { title: 'Bell', type: 'SPINE 2D · SD CHARACTER', description: 'SD 캐릭터 Bell의 Spine 애니메이션입니다.', data: { binaryUrl: 'SD_Bell/SD_Bell.skel.bytes', atlasUrl: 'assets/spine/SD_Bell/SD_Bell.atlas' }, preview: 'preview-sd', viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' } },
+  { title: 'PopoMayor', type: 'SPINE 2D · SD CHARACTER', description: 'SD 캐릭터 PopoMayor의 Spine 애니메이션입니다.', data: { binaryUrl: 'SD_PopoMayor/SD_PopoMayor.skel.bytes', atlasUrl: 'SD_PopoMayor/SD_PopoMayor.atlas.txt' }, preview: 'preview-popo-mayor', viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' } },
+  { title: 'Hellhedgehog', type: 'SPINE 2D · MONSTER', description: 'Hellhedgehog 몬스터의 Spine 애니메이션입니다.', data: { binaryUrl: 'assets/spine/Monster_Hellhedgehog/2D_Hellhedgehog.skel', atlasUrl: 'assets/spine/Monster_Hellhedgehog/2D_Hellhedgehog.atlas' }, preview: 'preview-monster', viewportPadding: { horizontal: '18%', top: '18%', bottom: '3%' } }
 ];
 
 let activePlayer = null;
@@ -28,7 +28,7 @@ function createPlayer(hostId, work, controls = false, onError = null, onSuccess 
       padLeft: padding.horizontal,
       padRight: padding.horizontal,
       padTop: padding.top,
-      padBottom: 0,
+      padBottom: padding.bottom || 0,
       transitionTime: 0.18
     },
     success: player => {
@@ -45,7 +45,7 @@ function createPlayer(hostId, work, controls = false, onError = null, onSuccess 
       const firstAnimation = work.initialAnimation || animations[0]?.name;
       player.skeleton.setToSetupPose();
       player.skeleton.updateWorldTransform();
-      const rootBone = player.skeleton.findBone('root');
+      const rootBone = player.skeleton.findBone('root') || player.skeleton.bones.find(bone => !bone.parent);
       const floorY = rootBone ? rootBone.worldY : minY;
       if (Number.isFinite(minX) && Number.isFinite(floorY) && maxX > minX && maxY > floorY) {
         Object.assign(config.viewport, { x: minX, y: floorY, width: maxX - minX, height: maxY - floorY });
