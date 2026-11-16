@@ -1,8 +1,8 @@
 const WORKS = [
   { title: 'Lazuel — Character Study', type: 'SPINE 2D · ILLUSTRATION', description: '애니메이션을 선택해 재생해보세요.', data: { jsonUrl: 'assets/spine/Illust_Lazuel_PS/Illust_Lazuel_PS.json', atlasUrl: 'assets/spine/Illust_Lazuel_PS/Illust_Lazuel_PS.atlas' }, preview: 'preview-illust', initialAnimation: 'idle', viewportPadding: { horizontal: '8%', top: '8%' } },
-  { title: 'Bell', type: 'SPINE 2D · SD CHARACTER', description: 'SD 캐릭터 Bell의 Spine 애니메이션입니다.', data: { binaryUrl: 'SD_Bell/SD_Bell.skel.bytes', atlasUrl: 'assets/spine/SD_Bell/SD_Bell.atlas' }, preview: 'preview-sd', viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' }, characterFrameFill: 0.58 },
-  { title: 'PopoMayor', type: 'SPINE 2D · SD CHARACTER', description: 'SD 캐릭터 PopoMayor의 Spine 애니메이션입니다.', data: { binaryUrl: 'SD_PopoMayor/SD_PopoMayor.skel.bytes', atlasUrl: 'SD_PopoMayor/SD_PopoMayor.atlas.txt' }, preview: 'preview-popo-mayor', viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' }, characterFrameFill: 0.58 },
-  { title: 'Hellhedgehog', type: 'SPINE 2D · MONSTER', description: 'Hellhedgehog 몬스터의 Spine 애니메이션입니다.', data: { binaryUrl: 'assets/spine/Monster_Hellhedgehog/2D_Hellhedgehog.skel', atlasUrl: 'assets/spine/Monster_Hellhedgehog/2D_Hellhedgehog.atlas' }, preview: 'preview-monster', viewportPadding: { horizontal: '18%', top: '18%', bottom: '3%' }, characterFrameFill: 0.58 }
+  { title: 'Bell', type: 'SPINE 2D · SD CHARACTER', description: 'SD 캐릭터 Bell의 Spine 애니메이션입니다.', data: { binaryUrl: 'SD_Bell/SD_Bell.skel.bytes', atlasUrl: 'assets/spine/SD_Bell/SD_Bell.atlas' }, preview: 'preview-sd', viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' }, characterFrameFill: 0.4 },
+  { title: 'PopoMayor', type: 'SPINE 2D · SD CHARACTER', description: 'SD 캐릭터 PopoMayor의 Spine 애니메이션입니다.', data: { binaryUrl: 'SD_PopoMayor/SD_PopoMayor.skel.bytes', atlasUrl: 'SD_PopoMayor/SD_PopoMayor.atlas.txt' }, preview: 'preview-popo-mayor', viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' }, characterFrameFill: 0.4 },
+  { title: 'Hellhedgehog', type: 'SPINE 2D · MONSTER', description: 'Hellhedgehog 몬스터의 Spine 애니메이션입니다.', data: { binaryUrl: 'assets/spine/Monster_Hellhedgehog/2D_Hellhedgehog.skel', atlasUrl: 'assets/spine/Monster_Hellhedgehog/2D_Hellhedgehog.atlas' }, preview: 'preview-monster', viewportPadding: { horizontal: '18%', top: '18%', bottom: '3%' }, characterFrameFill: 0.4 }
 ];
 
 let activePlayer = null;
@@ -25,10 +25,10 @@ function createPlayer(hostId, work, controls = false, onError = null, onSuccess 
     alpha: true,
     backgroundColor: '#e7eae200',
     viewport: {
-      padLeft: padding.horizontal,
-      padRight: padding.horizontal,
-      padTop: padding.top,
-      padBottom: padding.bottom || 0,
+      padLeft: work.characterFrameFill ? '0%' : padding.horizontal,
+      padRight: work.characterFrameFill ? '0%' : padding.horizontal,
+      padTop: work.characterFrameFill ? '0%' : padding.top,
+      padBottom: work.characterFrameFill ? '0%' : (padding.bottom || 0),
       transitionTime: 0.18
     },
     success: player => {
@@ -48,7 +48,9 @@ function createPlayer(hostId, work, controls = false, onError = null, onSuccess 
       const rootBone = player.skeleton.findBone('root') || player.skeleton.bones.find(bone => !bone.parent);
       const floorY = rootBone ? rootBone.worldY : minY;
       if (Number.isFinite(minX) && Number.isFinite(floorY) && maxX > minX && maxY > floorY) {
-        const characterHeight = maxY - floorY;
+        // Use full animation bounds for zoom. The root bone is the floor anchor,
+        // but its height within the bounds can differ between rigs.
+        const characterHeight = maxY - minY;
         const characterWidth = maxX - minX;
         if (work.characterFrameFill) {
           const host = document.getElementById(hostId);
