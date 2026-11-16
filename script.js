@@ -42,11 +42,14 @@ function createPlayer(hostId, work, controls = false, onError = null, onSuccess 
         maxX = Math.max(maxX, bounds.x + bounds.width);
         maxY = Math.max(maxY, bounds.y + bounds.height);
       });
-      if (Number.isFinite(minX) && maxX > minX && maxY > minY) {
-        Object.assign(config.viewport, { x: minX, y: minY, width: maxX - minX, height: maxY - minY });
-      }
       const firstAnimation = work.initialAnimation || animations[0]?.name;
       player.skeleton.setToSetupPose();
+      player.skeleton.updateWorldTransform();
+      const rootBone = player.skeleton.findBone('root');
+      const floorY = rootBone ? rootBone.worldY : minY;
+      if (Number.isFinite(minX) && Number.isFinite(floorY) && maxX > minX && maxY > floorY) {
+        Object.assign(config.viewport, { x: minX, y: floorY, width: maxX - minX, height: maxY - floorY });
+      }
       if (firstAnimation) {
         player.setAnimation(firstAnimation, true);
         player.animationState.apply(player.skeleton);
