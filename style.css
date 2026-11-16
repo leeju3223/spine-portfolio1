@@ -10,6 +10,7 @@ body{margin:0;background:var(--paper);color:var(--ink);font-family:"DM Sans","No
 .category-heading h2{font-size:14px;font-weight:600;letter-spacing:.12em;margin:0;text-transform:uppercase}
 .category-heading span{font-size:9px;color:var(--muted);letter-spacing:.1em}
 .category .work-grid{grid-template-columns:minmax(0,660px)}
+.category-sd .work-grid{grid-template-columns:repeat(2,minmax(0,1fr));max-width:none}
 .work-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px}
 .work-card{min-width:0;cursor:pointer;outline:none}
 .work-visual{height:clamp(300px,42vw,560px);position:relative;overflow:hidden;background:#e6e9df}
