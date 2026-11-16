@@ -103,7 +103,7 @@ const WORKS = [
     },
     preview: 'preview-ui-victory',
     viewportPadding: { horizontal: '8%', top: '8%' },
-    positionOffset: { x: 0, y: 0 },
+    positionOffset: { x: 0, y: -0.14 },
     characterZoom: 1.38
   },
   {
