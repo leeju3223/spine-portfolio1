@@ -12,7 +12,8 @@ const WORKS = [
     preview: 'preview-illust',
     initialAnimation: 'idle',
     viewportPadding: { horizontal: '8%', top: '8%' },
-    positionOffset: { x: 0, y: 0 }
+    positionOffset: { x: 0, y: 0 },
+    characterZoom: 1
   },
   {
     title: 'Kasira',
@@ -24,7 +25,8 @@ const WORKS = [
     },
     preview: 'preview-illust-kasira',
     viewportPadding: { horizontal: '8%', top: '8%' },
-    positionOffset: { x: 0, y: 0 }
+    positionOffset: { x: 0, y: 0 },
+    characterZoom: 1
   },
   {
     title: 'Bell',
@@ -130,11 +132,14 @@ function createPlayer(hostId, work, controls = false, onError = null, onSuccess 
             height: viewHeight
           });
         } else {
+          const zoom = work.characterZoom || 1;
+          const viewWidth = characterWidth / zoom;
+          const viewHeight = characterHeight / zoom;
           Object.assign(config.viewport, {
-            x: minX - (positionOffset.x || 0) * characterWidth,
-            y: floorY - (positionOffset.y || 0) * characterHeight,
-            width: characterWidth,
-            height: characterHeight
+            x: minX + (characterWidth - viewWidth) / 2 - (positionOffset.x || 0) * viewWidth,
+            y: floorY - (positionOffset.y || 0) * viewHeight,
+            width: viewWidth,
+            height: viewHeight
           });
         }
       }
