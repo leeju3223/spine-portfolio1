@@ -42,6 +42,19 @@ const WORKS = [
     characterZoom: 1.85
   },
   {
+    title: 'Penny',
+    type: 'SPINE 2D · ILLUSTRATION',
+    description: 'Spine 일러스트 Penny의 애니메이션입니다.',
+    data: {
+      binaryUrl: 'Illust_Penny_PS/Illust_Penny_PS.skel.bytes',
+      atlasUrl: 'Illust_Penny_PS/Illust_Penny_PS.atlas.txt'
+    },
+    preview: 'preview-illust-penny',
+    viewportPadding: { horizontal: '8%', top: '8%' },
+    positionOffset: { x: 0, y: 0 },
+    characterZoom: 1
+  },
+  {
     title: 'Bell',
     type: 'SPINE 2D · SD CHARACTER',
     description: 'SD 캐릭터 Bell의 Spine 애니메이션입니다.',
