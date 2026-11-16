@@ -15,6 +15,18 @@ const WORKS = [
     positionOffset: { x: 0, y: 0 }
   },
   {
+    title: 'Kasira',
+    type: 'SPINE 2D · ILLUSTRATION',
+    description: 'Spine 일러스트 Kasira의 애니메이션입니다.',
+    data: {
+      binaryUrl: 'assets/spine/Illust_Kasira_PS/Illust_Kasira_PS.skel.bytes',
+      atlasUrl: 'assets/spine/Illust_Kasira_PS/Illust_Kasira_PS.atlas.txt'
+    },
+    preview: 'preview-illust-kasira',
+    viewportPadding: { horizontal: '8%', top: '8%' },
+    positionOffset: { x: 0, y: 0 }
+  },
+  {
     title: 'Bell',
     type: 'SPINE 2D · SD CHARACTER',
     description: 'SD 캐릭터 Bell의 Spine 애니메이션입니다.',
