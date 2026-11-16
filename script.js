@@ -92,6 +92,32 @@ const WORKS = [
     viewportPadding: { horizontal: '18%', top: '18%', bottom: '3%' },
     characterFrameFill: 0.4,
     characterZoom: 2
+  },
+  {
+    title: 'UI_Victory',
+    type: 'SPINE 2D · UI',
+    description: 'Victory UI Spine 애니메이션입니다.',
+    data: {
+      binaryUrl: 'assets/spine/UI_Victory/UI_Victory.skel.bytes',
+      atlasUrl: 'assets/spine/UI_Victory/UI_Victory.atlas'
+    },
+    preview: 'preview-ui-victory',
+    viewportPadding: { horizontal: '8%', top: '8%' },
+    positionOffset: { x: 0, y: 0 },
+    characterZoom: 1
+  },
+  {
+    title: 'UI_Defeat',
+    type: 'SPINE 2D · UI',
+    description: 'Defeat UI Spine 애니메이션입니다.',
+    data: {
+      binaryUrl: 'assets/spine/UI_Defeat/UI_Defeat.skel.bytes',
+      atlasUrl: 'assets/spine/UI_Defeat/UI_Defeat.atlas.txt'
+    },
+    preview: 'preview-ui-defeat',
+    viewportPadding: { horizontal: '8%', top: '8%' },
+    positionOffset: { x: 0, y: 0 },
+    characterZoom: 1
   }
 ];
 
