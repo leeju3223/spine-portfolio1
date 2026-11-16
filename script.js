@@ -59,7 +59,7 @@ function createPlayer(hostId, work, controls = false, onError = null, onSuccess 
           const viewHeight = baseViewHeight / (work.characterZoom || 1);
           const viewWidth = viewHeight * aspect;
           const centerX = (minX + maxX) / 2;
-          const floorGap = viewHeight * 0.7;
+          const floorGap = viewHeight * 0.4;
           Object.assign(config.viewport, {
             x: centerX - viewWidth / 2,
             y: floorY - floorGap,
