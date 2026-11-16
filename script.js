@@ -38,8 +38,8 @@ const WORKS = [
     },
     preview: 'preview-illust-keneth',
     viewportPadding: { horizontal: '8%', top: '8%' },
-    positionOffset: { x: 0, y: 0.1 },
-    characterZoom: 1.5
+    positionOffset: { x: 0, y: -0.1 },
+    characterZoom: 1.7
   },
   {
     title: 'Bell',
