@@ -13,7 +13,8 @@ const WORKS = [
     initialAnimation: 'idle',
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: 0, y: 0.1 },
-    characterZoom: 1.2
+    characterZoom: 1.2,
+    playbackSpeed: 1
   },
   {
     title: 'Kasira',
@@ -26,7 +27,8 @@ const WORKS = [
     preview: 'preview-illust-kasira',
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: 0, y: 0.1 },
-    characterZoom: 1.2
+    characterZoom: 1.2,
+    playbackSpeed: 1
   },
   {
     title: 'Keneth New Year 2026',
@@ -39,7 +41,8 @@ const WORKS = [
     preview: 'preview-illust-keneth',
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: 0, y: -0.2 },
-    characterZoom: 1.85
+    characterZoom: 1.85,
+    playbackSpeed: 1
   },
   {
     title: 'Penny',
@@ -52,7 +55,8 @@ const WORKS = [
     preview: 'preview-illust-penny',
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: 0, y: 0.05 },
-    characterZoom: 1.6
+    characterZoom: 1.6,
+    playbackSpeed: 1
   },
   {
     title: 'Bell',
@@ -103,8 +107,8 @@ const WORKS = [
     },
     preview: 'preview-ui-victory',
     viewportPadding: { horizontal: '8%', top: '8%' },
-    positionOffset: { x: 0, y: -0 },
-    characterZoom: 1
+    positionOffset: { x: 0, y: -0.14 },
+    characterZoom: 1.38
   },
   {
     title: 'UI_Defeat',
@@ -199,6 +203,9 @@ function createPlayer(hostId, work, controls = false, onError = null, onSuccess 
         player.setAnimation(firstAnimation, true);
         player.animationState.apply(player.skeleton);
         player.skeleton.updateWorldTransform();
+      }
+      if (Number.isFinite(work.playbackSpeed) && work.playbackSpeed > 0) {
+        player.speed = work.playbackSpeed;
       }
       player.play();
       if (hostId === 'spinePlayer') placeholder.hidden = true;
