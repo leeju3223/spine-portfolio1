@@ -42,7 +42,7 @@ const WORKS = [
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: 0, y: -0.2 },
     characterZoom: 1.85,
-    playbackSpeed: 1
+    playbackSpeed: 1.2
   },
   {
     title: 'Penny',
@@ -56,7 +56,7 @@ const WORKS = [
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: 0, y: 0.05 },
     characterZoom: 1.6,
-    playbackSpeed: 1
+    playbackSpeed: 1.2
   },
   {
     title: 'Bell',
