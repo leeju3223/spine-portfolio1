@@ -26,7 +26,7 @@ const WORKS = [
     preview: 'preview-illust-kasira',
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: 0, y: 0.5 },
-    characterZoom: 2
+    characterZoom: 1.2
   },
   {
     title: 'Bell',
