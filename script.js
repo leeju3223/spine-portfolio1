@@ -38,7 +38,7 @@ const WORKS = [
     },
     preview: 'preview-illust-keneth',
     viewportPadding: { horizontal: '8%', top: '8%' },
-    positionOffset: { x: -0.12, y: -0.12 },
+    positionOffset: { x: 0, y: -0.2 },
     characterZoom: 1.85
   },
   {
