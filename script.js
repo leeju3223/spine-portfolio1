@@ -82,7 +82,7 @@ const WORKS = [
     preview: 'preview-popo-mayor',
     viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' },
     characterFrameFill: 0.4,
-    characterZoom: 2.5
+    characterZoom: 3.5
   },
   {
     title: 'Kaoring',
@@ -95,7 +95,7 @@ const WORKS = [
     preview: 'preview-kaoring',
     viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' },
     characterFrameFill: 0.4,
-    characterZoom: 3.5
+    characterZoom: 4.4
   },
   {
     title: 'Hellhedgehog',
