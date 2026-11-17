@@ -85,6 +85,19 @@ const WORKS = [
     characterZoom: 2.5
   },
   {
+    title: 'Kaoring',
+    type: 'SPINE 2D · SD CHARACTER',
+    description: 'SD 캐릭터 Kaoring의 Spine 애니메이션입니다.',
+    data: {
+      binaryUrl: 'assets/spine/SD_Kaoring/SD_Kaoring.skel.bytes',
+      atlasUrl: 'assets/spine/SD_Kaoring/SD_Kaoring.atlas'
+    },
+    preview: 'preview-kaoring',
+    viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' },
+    characterFrameFill: 0.4,
+    characterZoom: 2.5
+  },
+  {
     title: 'Hellhedgehog',
     type: 'SPINE 2D · MONSTER',
     description: 'Hellhedgehog 몬스터의 Spine 애니메이션입니다.',
