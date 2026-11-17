@@ -42,7 +42,7 @@ const WORKS = [
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: 0, y: -0.2 },
     characterZoom: 1.85,
-    playbackSpeed: 1.2
+    playbackSpeed: 1
   },
   {
     title: 'Penny',
@@ -56,7 +56,7 @@ const WORKS = [
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: 0, y: 0.05 },
     characterZoom: 1.6,
-    playbackSpeed: 1.2
+    playbackSpeed: 1
   },
   {
     title: 'Bell',
@@ -107,8 +107,9 @@ const WORKS = [
     },
     preview: 'preview-ui-victory',
     viewportPadding: { horizontal: '8%', top: '8%' },
+    centerInFrame: true,
     positionOffset: { x: 0, y: 0 },
-    characterZoom: 1
+    characterZoom: 1.38
   },
   {
     title: 'UI_Defeat',
@@ -120,6 +121,7 @@ const WORKS = [
     },
     preview: 'preview-ui-defeat',
     viewportPadding: { horizontal: '8%', top: '8%' },
+    centerInFrame: true,
     positionOffset: { x: 0, y: 0 },
     characterZoom: 1
   }
@@ -191,12 +193,21 @@ function createPlayer(hostId, work, controls = false, onError = null, onSuccess 
           const zoom = work.characterZoom || 1;
           const viewWidth = characterWidth / zoom;
           const viewHeight = characterHeight / zoom;
-          Object.assign(config.viewport, {
-            x: minX + (characterWidth - viewWidth) / 2 - (positionOffset.x || 0) * viewWidth,
-            y: floorY - (positionOffset.y || 0) * viewHeight,
-            width: viewWidth,
-            height: viewHeight
-          });
+          if (work.centerInFrame) {
+            Object.assign(config.viewport, {
+              x: (minX + maxX - viewWidth) / 2 - (positionOffset.x || 0) * viewWidth,
+              y: (minY + maxY - viewHeight) / 2 - (positionOffset.y || 0) * viewHeight,
+              width: viewWidth,
+              height: viewHeight
+            });
+          } else {
+            Object.assign(config.viewport, {
+              x: minX + (characterWidth - viewWidth) / 2 - (positionOffset.x || 0) * viewWidth,
+              y: floorY - (positionOffset.y || 0) * viewHeight,
+              width: viewWidth,
+              height: viewHeight
+            });
+          }
         }
       }
       if (firstAnimation) {
