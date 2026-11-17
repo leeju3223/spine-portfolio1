@@ -69,6 +69,8 @@ const WORKS = [
     preview: 'preview-sd',
     viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' },
     characterFrameFill: 0.4,
+    centerInFrame: true,
+    positionOffset: { x: 0.05, y: 0 },
     characterZoom: 2.5
   },
   {
@@ -82,7 +84,9 @@ const WORKS = [
     preview: 'preview-popo-mayor',
     viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' },
     characterFrameFill: 0.4,
-    characterZoom: 3.5
+    centerInFrame: true,
+    positionOffset: { x: -0.2, y: 0 },
+    characterZoom: 3
   },
   {
     title: 'Kaoring',
@@ -95,6 +99,8 @@ const WORKS = [
     preview: 'preview-kaoring',
     viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' },
     characterFrameFill: 0.4,
+    centerInFrame: true,
+    positionOffset: { x: -0.085, y: 0 },
     characterZoom: 4.4
   },
   {
@@ -195,10 +201,11 @@ function createPlayer(hostId, work, controls = false, onError = null, onSuccess 
           const viewHeight = baseViewHeight / (work.characterZoom || 1);
           const viewWidth = viewHeight * aspect;
           const centerX = (minX + maxX) / 2;
-          const floorGap = viewHeight * 0.03;
           Object.assign(config.viewport, {
             x: centerX - viewWidth / 2 - (positionOffset.x || 0) * viewWidth,
-            y: floorY - floorGap - (positionOffset.y || 0) * viewHeight,
+            y: work.centerInFrame
+              ? (minY + maxY - viewHeight) / 2 - (positionOffset.y || 0) * viewHeight
+              : floorY - viewHeight * 0.03 - (positionOffset.y || 0) * viewHeight,
             width: viewWidth,
             height: viewHeight
           });
