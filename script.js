@@ -70,7 +70,7 @@ const WORKS = [
     viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' },
     characterFrameFill: 0.4,
     centerInFrame: true,
-    positionOffset: { x: 0.05, y: 0 },
+    positionOffset: { x: 0.05, y: -0.34 },
     characterZoom: 2.5
   },
   {
@@ -100,7 +100,7 @@ const WORKS = [
     viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' },
     characterFrameFill: 0.4,
     centerInFrame: true,
-    positionOffset: { x: -0.085, y: 0 },
+    positionOffset: { x: -0.085, y: -0.34 },
     characterZoom: 4.4
   },
   {
