@@ -104,6 +104,21 @@ const WORKS = [
     characterZoom: 4.4
   },
   {
+    title: 'Hilde',
+    type: 'SPINE 2D · SD CHARACTER',
+    description: 'SD 캐릭터 Hilde의 Spine 애니메이션입니다.',
+    data: {
+      binaryUrl: 'assets/spine/SD_Hilde/SD_Hilde.skel.bytes',
+      atlasUrl: 'assets/spine/SD_Hilde/SD_Hilde.atlas'
+    },
+    preview: 'preview-hilde',
+    viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' },
+    characterFrameFill: 0.4,
+    centerInFrame: true,
+    positionOffset: { x: 0, y: 0 },
+    characterZoom: 2.5
+  },
+  {
     title: 'Hellhedgehog',
     type: 'SPINE 2D · MONSTER',
     description: 'Hellhedgehog 몬스터의 Spine 애니메이션입니다.',
