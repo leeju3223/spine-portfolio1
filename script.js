@@ -115,7 +115,7 @@ const WORKS = [
     viewportPadding: { horizontal: '18%', top: '20%', bottom: '3%' },
     characterFrameFill: 0.4,
     centerInFrame: true,
-    positionOffset: { x: 0.03, y: -0.32 },
+    positionOffset: { x: 0.03, y: -0.30 },
     characterZoom: 1.25
   },
   {
