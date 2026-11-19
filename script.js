@@ -97,7 +97,7 @@ const WORKS = [
     preview: 'preview-illust-radius',
     initialAnimation: 'Idle',
     viewportPadding: { horizontal: '8%', top: '8%' },
-    positionOffset: { x: 0, y: 0.1 },
+    positionOffset: { x: 0, y: -0.25 },
     characterZoom: 1.2,
     playbackSpeed: 1
   },
