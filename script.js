@@ -82,7 +82,7 @@ const WORKS = [
     },
     preview: 'preview-illust-pie',
     viewportPadding: { horizontal: '8%', top: '8%' },
-    positionOffset: { x: -0.05, y: -0.75 },
+    positionOffset: { x: -0.05, y: -0.5 },
     characterZoom: 2.0,
     playbackSpeed: 1
   },
