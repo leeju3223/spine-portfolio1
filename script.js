@@ -84,7 +84,7 @@ const WORKS = [
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: -0.05, y: -0.5 },
     characterZoom: 2.0,
-    playbackSpeed: 1
+    playbackSpeed: 1.1
   },
   {
     title: '라디우스 — 레전드 코스튬',
@@ -97,7 +97,7 @@ const WORKS = [
     preview: 'preview-illust-radius',
     initialAnimation: 'Idle',
     viewportPadding: { horizontal: '8%', top: '8%' },
-    positionOffset: { x: 0, y: 0.4 },
+    positionOffset: { x: 0, y: 0.1 },
     characterZoom: 1.2,
     playbackSpeed: 1
   },
