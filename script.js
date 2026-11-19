@@ -69,7 +69,7 @@ const WORKS = [
     preview: 'preview-illust-agni',
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: -0.2, y: -0.2 },
-    characterZoom: 1.8,
+    characterZoom: 1.4,
     playbackSpeed: 1
   },
   {
@@ -83,7 +83,7 @@ const WORKS = [
     preview: 'preview-illust-pie',
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: -0.05, y: -0.2 },
-    characterZoom: 1.7,
+    characterZoom: 2,
     playbackSpeed: 1
   },
   {
