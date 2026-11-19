@@ -73,6 +73,20 @@ const WORKS = [
     playbackSpeed: 1
   },
   {
+    title: '파이 — 레전드 코스튬',
+    type: 'SPINE 2D · ILLUSTRATION',
+    description: '파이 레전드 코스튬 Spine 일러스트 애니메이션입니다.',
+    data: {
+      jsonUrl: 'assets/spine/퍄이/파이_레전드코스튬.json',
+      atlasUrl: 'assets/spine/퍄이/파이_레전드코스튬.atlas'
+    },
+    preview: 'preview-illust-pie',
+    viewportPadding: { horizontal: '8%', top: '8%' },
+    positionOffset: { x: 0, y: 0.1 },
+    characterZoom: 1.2,
+    playbackSpeed: 1
+  },
+  {
     title: 'Bell',
     type: 'SPINE 2D · SD CHARACTER',
     description: 'SD 캐릭터 Bell의 Spine 애니메이션입니다.',
