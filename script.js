@@ -1,4 +1,4 @@
-// positionOffset is per work: x > 0 moves the character right, y > 0 moves it up.
+﻿// positionOffset is per work: x > 0 moves the character right, y > 0 moves it up.
 // Values are fractions of the viewport (0.05 = 5% of the frame).
 const WORKS = [
   {
@@ -56,6 +56,20 @@ const WORKS = [
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: 0, y: 0.05 },
     characterZoom: 1.6,
+    playbackSpeed: 1
+  },
+  {
+    title: '아그니 — 레전드 코스튬',
+    type: 'SPINE 2D · ILLUSTRATION',
+    description: '아그니 레전드 코스튬 Spine 일러스트 애니메이션입니다.',
+    data: {
+      jsonUrl: 'assets/spine/아그니/아그니_레전드코스튬.json',
+      atlasUrl: 'assets/spine/아그니/아그니_레전드코스튬.atlas'
+    },
+    preview: 'preview-illust-agni',
+    viewportPadding: { horizontal: '8%', top: '8%' },
+    positionOffset: { x: 0, y: 0.1 },
+    characterZoom: 1.2,
     playbackSpeed: 1
   },
   {
