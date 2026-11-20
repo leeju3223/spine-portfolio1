@@ -175,6 +175,19 @@ const WORKS = [
     characterZoom: 2
   },
   {
+    title: '2D Fox',
+    type: 'SPINE 2D · MONSTER',
+    description: '2D Fox 몬스터 캐릭터의 Spine 애니메이션입니다.',
+    data: {
+      binaryUrl: 'assets/spine/2D_Fox/2D_Fox.skel.bytes',
+      atlasUrl: 'assets/spine/2D_Fox/2D_Fox.atlas.txt'
+    },
+    preview: 'preview-2d-fox',
+    viewportPadding: { horizontal: '18%', top: '18%', bottom: '3%' },
+    characterFrameFill: 0.4,
+    characterZoom: 2
+  },
+  {
     title: 'UI_Victory',
     type: 'SPINE 2D · UI',
     description: 'Victory UI Spine 애니메이션입니다.',
