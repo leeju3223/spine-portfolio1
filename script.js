@@ -68,7 +68,7 @@ const WORKS = [
     },
     preview: 'preview-illust-agni',
     viewportPadding: { horizontal: '8%', top: '8%' },
-    positionOffset: { x: -0.2, y: -0.3 },
+    positionOffset: { x: -0.2, y: 0.1 },
     characterZoom: 1.4,
     playbackSpeed: 1
   },
@@ -83,8 +83,8 @@ const WORKS = [
     preview: 'preview-illust-pie',
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: -0.05, y: -0.5 },
-    characterZoom: 2.0,
-    playbackSpeed: 1.1
+    characterZoom: 2.2,
+    playbackSpeed: 1
   },
   {
     title: '라디우스 — 레전드 코스튬',
@@ -98,8 +98,8 @@ const WORKS = [
     initialAnimation: 'Idle',
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: -0.25, y: -0.25 },
-    characterZoom: 1.2,
-    playbackSpeed: 1.3
+    characterZoom: 1.5,
+    playbackSpeed: 1
   },
   {
     title: 'Bell',
