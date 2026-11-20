@@ -187,7 +187,7 @@ const WORKS = [
     viewportPadding: { horizontal: '18%', top: '18%', bottom: '3%' },
     characterFrameFill: 0.4,
     positionOffset: { x: 0, y: 0.05 },
-    characterZoom: 2
+    characterZoom: 2.6
   },
   {
     title: 'UI_Victory',
