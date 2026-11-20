@@ -172,6 +172,7 @@ const WORKS = [
     preview: 'preview-monster',
     viewportPadding: { horizontal: '18%', top: '18%', bottom: '3%' },
     characterFrameFill: 0.4,
+    positionOffset: { x: 0, y: 0.05 },
     characterZoom: 2
   },
   {
@@ -185,6 +186,7 @@ const WORKS = [
     preview: 'preview-2d-fox',
     viewportPadding: { horizontal: '18%', top: '18%', bottom: '3%' },
     characterFrameFill: 0.4,
+    positionOffset: { x: 0, y: 0.05 },
     characterZoom: 2
   },
   {
