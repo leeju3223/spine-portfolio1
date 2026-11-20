@@ -56,7 +56,7 @@ const WORKS = [
     viewportPadding: { horizontal: '8%', top: '8%' },
     positionOffset: { x: 0, y: 0.05 },
     characterZoom: 1.6,
-    playbackSpeed: 1
+    playbackSpeed: 1.4
   },
   {
     title: '아그니 — 레전드 코스튬',
