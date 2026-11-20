@@ -68,8 +68,8 @@ const WORKS = [
     },
     preview: 'preview-illust-agni',
     viewportPadding: { horizontal: '8%', top: '8%' },
-    positionOffset: { x: -0.2, y: -0.3 },
-    characterZoom: 1.6,
+    positionOffset: { x: -0.2, y: -0.45 },
+    characterZoom: 1.5,
     playbackSpeed: 1
   },
   {
